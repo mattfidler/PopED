@@ -23,13 +23,15 @@
 ## Function translated automatically using 'matlab.to.r()'
 ## Author: Andrew Hooker
 
-LinMatrixH <- function(model_switch,xt_ind,x,a,bpop,b_ind,bocc_ind,poped.db){
+LinMatrixH <- function(model_switch,xt_ind,x,a,bpop,b_ind,bocc_ind,
+poped.db){
   #----------Model linearization with respect to epsilon.
   #
   # size of return is (samples per individual x number of epsilons) 
   #
   # derivative of model w$r.t. eps eval at e=0
   #
+    start_parallel_env$babelmixr2 <- poped.db$babelmixr2
   NumEPS = size(poped.db$parameters$sigma,1)
   if((NumEPS==0)){
     y=0
@@ -61,6 +63,7 @@ LinMatrixH <- function(model_switch,xt_ind,x,a,bpop,b_ind,bocc_ind,poped.db){
 #' @keywords internal
 #' 
 gradf_eps <- function(model_switch,xt_ind,x,a,bpop,b_ind,bocc_ind,num_eps,poped.db){
+    start_parallel_env$babelmixr2 <- poped.db$babelmixr2
   #----------Model linearization with respect to epsilon.
   #
   # size of return is (samples per individual x number of epsilons)

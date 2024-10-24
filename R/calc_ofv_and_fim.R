@@ -47,7 +47,9 @@ calc_ofv_and_fim <- function (poped.db,
                               ofv_fun = poped.db$settings$ofv_fun,
                               evaluate_fim = TRUE,
                               ...) {
-  
+
+
+  start_parallel_env$babelmixr2 <- poped.db$babelmixr2
   ## compute the OFV
   if((ofv==0)){
     if(d_switch){ 

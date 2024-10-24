@@ -93,6 +93,7 @@ plot_model_prediction <- function(poped.db,
                                   PI_alpha=0.3,
                                   #PI_fill="blue",
                                   ...){
+  start_parallel_env$babelmixr2 <- poped.db$babelmixr2  
   PI_u <- PI_l <- NULL
   df <-  model_prediction(poped.db,
                           #models_to_use,

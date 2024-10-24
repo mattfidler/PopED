@@ -2,6 +2,7 @@
 ## Author: Andrew Hooker
 
 gradfg <- function(x,a,bpop,b_ind,bocc_ind,poped.db){
+  start_parallel_env$babelmixr2 <- poped.db$babelmixr2
 #
 #
 # size: (number of g's x number of random effects)

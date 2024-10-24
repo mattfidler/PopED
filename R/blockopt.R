@@ -20,7 +20,8 @@
 ## Author: Andrew Hooker
 
 blockopt <- function(fn,poped.db,opt_method=""){
-  
+  start_parallel_env$babelmixr2 <- poped.db$babelmixr2
+
   if(any(opt_method==c("RS","SG","DO"))){
     fprintf(fn,'==============================================================================\n')
     fprintf(fn,'Optimization Settings\n\n')

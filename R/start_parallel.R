@@ -1,3 +1,5 @@
+start_parallel_env <- new.env(parent=emptyenv())
+start_parallel_env$babelmixr2 <- NULL
 #' Start parallel computational processes
 #' 
 #' This tool chooses the type of parallelization process to use based on the
@@ -86,6 +88,13 @@ start_parallel <- function(parallel=TRUE,
                call. = FALSE)
         }
         parallel::clusterCall(cl, mrgsolve::loadso, x=mrgsolve_model)
+      }
+      if (!is.null(start_parallel_env$babelmixr2)) {
+        if (!requireNamespace("babelmixr2", quietly=TRUE)) {
+          stop("babelmixr2 package needed for this function to work. Please install it.",
+               call.=FALSE)
+        }
+        parallel::clusterCall(cl, babelmixr2::.popedCluster, start_parallel_env$babelmixr2)
       }
       # if(!is.null(cpp_files)){
       #   for(i in cpp_files){
